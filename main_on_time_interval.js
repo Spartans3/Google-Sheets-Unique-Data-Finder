@@ -4,18 +4,12 @@ var url = "https://api.telegram.org/bot" + token;
 var id = 1;
 
 function findUniqueWithInterval() {
-  var difference = checkRows();
+  var difference = checkRowsWithInterval();
   if (difference != null) {
-    for (i = 0; i < difference.length; i++) {
-      var send =
-        url +
-        "/sendMessage?chat_id=" +
-        id +
-        "&text=" +
-        encodeURIComponent(difference[i]);
-      setTimeout(function () {
+    for(i = 0 ; i<difference.length ; i++){
+        var send = url + "/sendMessage?chat_id=" + id + "&text=" + encodeURIComponent(difference[i]);
         UrlFetchApp.fetch(send);
-      }, 1000); // wait 1 second before sending the next message
+        Utilities.sleep(1 * 1000)// wait 1 second before sending the next message
     }
   }
 }

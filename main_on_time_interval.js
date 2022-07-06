@@ -28,6 +28,7 @@ function checkRowsWithInterval() {
       commonCells.push(commonValues[i][0]);
     }
   }
+  let uniqueCommonCells = [...new Set(commonCells)];
 
   for (i = 0; i < uniqueValues.length; i++) {
     if (uniqueValues[i][1] != "") {
@@ -35,7 +36,7 @@ function checkRowsWithInterval() {
     }
   }
 
-  let difference = commonCells.filter((x) => !uniqueCells.includes(x));
+  let difference = uniqueCommonCells.filter((x) => !uniqueCells.includes(x));
   if (difference.length > 0) {
     var activeSheet = spreadsheet.getSheets()[1];
     activeSheet.getRange(1, 2).setValue("Unique Data");

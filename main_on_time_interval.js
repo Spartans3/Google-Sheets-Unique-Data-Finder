@@ -51,8 +51,10 @@ function checkRowsWithInterval() {
       String(currentdate.getHours()).padStart(2, "0") +
       ":" +
       currentdate.getMinutes();
+    var Avals = activeSheet.getRange("A1:A").getValues();
+    var Alast = Avals.filter(String).length;
     for (i = 0; i < difference.length; i++) {
-      var lastRow = activeSheet.getLastRow() + 1;
+      var lastRow = Alast + i+ 1;
       activeSheet.getRange(lastRow, 2).setValue(difference[i]);
       activeSheet.getRange(lastRow, 1).setValue(dateString);
     }

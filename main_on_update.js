@@ -34,7 +34,9 @@ function checkRows(){
       var activeSheet = spreadsheet.getSheets()[1];
       activeSheet.getRange(1 , 2 ).setValue("Unique Data");
       activeSheet.getRange(1 , 1 ).setValue("Date");
-      var lastRow = activeSheet.getLastRow()+1;
+      var Avals = activeSheet.getRange("A1:A").getValues();
+      var Alast = Avals.filter(String).length;
+      var lastRow = Alast +1;
       var currentdate = new Date(); 
       const month = currentdate.toLocaleString('default', { month: 'short' });
       var dateString = month + " " + currentdate.getDate() + " | " + String(currentdate.getHours()).padStart(2, '0') + ":" + currentdate.getMinutes();
